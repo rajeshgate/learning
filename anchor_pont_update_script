@@ -1,0 +1,31 @@
+aa = AdminArea.all(:joins => :geofeature, :conditions => ['anchor_point = 0 and anchor_type = 0 and pos_accuracy <= 3 and level <> 0'], :select => ['admin_area.id, admin_area.name, admin_area.anchor_point, admin_area.anchor_type, admin_area.aa_in_aa_id'])
+#puts "#{aa[0].id}"
+if aa.size != 0
+aa.each do |cc|
+  pp = AdminArea.all(:conditions => ["id = #{cc.aa_in_aa_id}"], :select => ['id, name, anchor_point, aa_in_aa_id, anchor_type'])
+  #puts "#{pp[0].anchor_point}"
+ if pp[0].anchor_point != 0
+  #puts "#{cc.id} | #{pp[0].id} | #{pp[0].anchor_point} | #{pp[0].anchor_type}"
+  cc.anchor_type = pp[0].anchor_type
+  cc.anchor_point = pp[0].anchor_point
+  cc.save
+ else
+  tt = AdminArea.all(:conditions => ["id = #{pp[0].aa_in_aa_id}"], :select => ['id, name, anchor_point, aa_in_aa_id, anchor_type'])
+  #puts "*#{cc.id} | *#{pp[0].id} | *#{tt[0].anchor_point} | #{tt[0].anchor_type}"
+  cc.anchor_type = tt[0].anchor_type
+  cc.anchor_point = tt[0].anchor_point
+  cc.save
+ end
+end 
+end
+
+
+
+
+
+
+
+
+
+
+ 
