@@ -127,11 +127,11 @@ overlapping borders correctly.  */
 #nature-reserve-boundaries {
   [zoom >= 7] {
     ::fill [zoom < 13] {
-      opacity: 0.05;
+      opacity: 0.25;
       polygon-fill: green;
     }
     ::line {
-      opacity: 0.15;
+      opacity: 0.25;
       line-color: green;
       line-width: 1.5;
       line-dasharray: 4,2;

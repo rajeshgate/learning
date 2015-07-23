@@ -10,8 +10,8 @@
 
 // --- sports ---
 
-@stadium: #3c9; // also sports_centre
-@track: #74dcba;
+@stadium: #cae6a9; // also sports_centre
+@track: #cae6a9;
 @pitch: #cae6a9;
 
 // --- "base" landuses ---
